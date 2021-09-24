@@ -1,0 +1,25 @@
+# -NET
+Jednostavnost je naša granica kojom prikazujemo naša djela širokoj masi.
+Imports System.Console
+Module Module1
+    Sub Main()
+        Dim slucajni As Random = New Random()
+        Dim izvuceni_brojevi, broj As Integer
+        Dim i As Integer = 1
+unos:
+        'izvlačenje_broja
+        broj = slucajni.Next(1, 40)
+        'provjeriti da li je izvucen
+        If (izvuceni_brojevi And (1 << broj)) <> 0 Then
+            ' WriteLine("Ponovljen broj {0}", broj)
+            'ako je izvucen, ponoviti izvlacenje
+            GoTo unos
+        Else
+            'u suprotnom ispisati izvuceni broj
+            WriteLine(broj)
+            izvuceni_brojevi = izvuceni_brojevi Or (1 << broj)
+            i += 1 'brojimo izvlačenja
+            If i <= 7 Then
+                GoTo unos
+            End If
+        End If
